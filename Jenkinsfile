@@ -1,9 +1,26 @@
 pipeline {
   agent any
   stages {
-    stage('Send Email') {
+    stage('Build') {
+      parallel {
+        stage('Build') {
+          steps {
+            sh 'echo "Building..."'
+          }
+        }
+
+        stage('Build 2') {
+          steps {
+            echo 'Hello'
+          }
+        }
+
+      }
+    }
+
+    stage('Deploy') {
       steps {
-        emailext(subject: 'Hello from jenkins', body: 'Hello World', from: 'max.pronko@gmail.com', to: 'max.pronko@gmail.com')
+        sh 'echo ${PWD}'
       }
     }
 
