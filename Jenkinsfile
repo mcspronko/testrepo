@@ -20,7 +20,9 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        sh 'echo ${PWD}'
+        sh '''echo ${PWD}
+
+ls -la'''
       }
     }
 
